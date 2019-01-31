@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+     <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+  <body>
+     <p><%= title %></p>
+   <% if(customers.length > 0){ %>
+      <table>
+          <th>ID</th>
+          <th>First_name</th>
+          <th>Last_name</th>
+          <th>Email</th>
+          <th>Position</th>
+          <th>Number</th>
+          <th>Username</th>
+          <th>image</th>
+          
+                 <% customers.forEach((customer)=> { 
+                                     
+                  %>
+                  <tr>
+                          <td><%= customer.id %></td>
+                          <td><%= customer.first_name %></td>
+                          <td><%= customer.last_name %></td>
+                          <td><%= customer.email %></td>
+                          <td><%= customer.position %></td>
+                          <td><%= customer.number %></td>
+                          <td>@<%= customer.username %></td>
+                          <td><img src="/assets/img/<%= customer.image %>"class="rounded-circle player-img" width="50" height="50" /></td>
+                          <td><a href="/dashboard/edit/<%= customer.id %>" target="_blank">Edit</a></td>
+                          <td><a href="/dashboard/delete/<%= customer.id %>">Delete</a></td>
+                 </tr>       
+             <% }) %>
+        
+      <% }
+       else { %>
+                <p>No Customers found</p>
+     <% } %>
+      
+    </table>
+  </body>
+</html>
